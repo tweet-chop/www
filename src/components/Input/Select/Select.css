@@ -1,0 +1,10 @@
+.input-select {
+  height: 6vh;
+  font-size: 1.17em;
+  text-align: center;
+  border: 1px solid lightgrey;
+  border-radius: 6px;
+  padding: 6px;
+  -moz-appearance: initial;
+  -webkit-appearance: initial;
+}

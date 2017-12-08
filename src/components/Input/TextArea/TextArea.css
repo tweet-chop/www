@@ -1,0 +1,8 @@
+.input-textarea {
+  resize: none;
+  height: 25vh;
+  font-size: 1.17em;
+  border: 1px solid lightgrey;
+  border-radius: 6px;
+  padding: 6px;
+}

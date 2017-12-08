@@ -1,0 +1,11 @@
+.input-wrapper {
+  display: grid;
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.input-label {
+  font-size: 0.75em;
+  color: grey;
+  margin: 6px 0px;
+}
