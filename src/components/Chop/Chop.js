@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import './Chop.css'
+import './Chop.css';
 
 const Chop = ({ chop }) => (
   <li className="chop">
     <p className="chop-text">{chop}</p>
   </li>
-)
+);
 
-export default Chop
+export default Chop;

@@ -1,5 +1,5 @@
-import config from '../../config'
-import checkStatus from '../../utils/check-http-status'
+import config from '../../config';
+import checkStatus from '../../utils/check-http-status';
 
 const api = {
   init: () => {},
@@ -29,7 +29,7 @@ const api = {
 
   post: async (key, data) => {
     let value, error;
-  
+
     try {
       value = await fetch(`${config.url}/api/${key}`, {
         method: 'POST',
@@ -43,9 +43,9 @@ const api = {
     } catch (err) {
       error = err;
     }
-  
+
     return [value, error];
   }
-}
+};
 
-export default api
+export default api;

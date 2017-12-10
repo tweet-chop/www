@@ -1,22 +1,22 @@
-import React from 'react'
+import React from 'react';
 
-import Select from './Select'
-import TextArea from './TextArea'
+import Select from './Select';
+import TextArea from './TextArea';
 
-import './Input.css'
+import './Input.css';
 
 const Input = ({ type, label, ...props }) => {
   let input;
 
-  switch(type) {
+  switch (type) {
     case 'select':
-      input = <Select {...props} />
-      break
+      input = <Select {...props} />;
+      break;
     case 'textarea':
-      input = <TextArea {...props} />
-      break
+      input = <TextArea {...props} />;
+      break;
     default:
-      return <p>Error: input type `{type}` not recognized.</p>
+      return <p>Error: input type `{type}` not recognized.</p>;
   }
 
   return (
@@ -24,7 +24,7 @@ const Input = ({ type, label, ...props }) => {
       <span className="input-label">{label}</span>
       {input}
     </label>
-  )
-}
+  );
+};
 
-export default Input
+export default Input;

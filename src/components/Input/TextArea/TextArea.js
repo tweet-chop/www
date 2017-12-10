@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-import './TextArea.css'
+import './TextArea.css';
 
-const TextArea = ({className = '', name, placeholder, value, onChange }) => (
+const TextArea = ({ className = '', name, placeholder, value, onChange }) => (
   <textarea
     name={name}
     className={`input-textarea ${className}`}
@@ -12,4 +12,4 @@ const TextArea = ({className = '', name, placeholder, value, onChange }) => (
   />
 );
 
-export default TextArea
+export default TextArea;

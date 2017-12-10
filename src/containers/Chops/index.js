@@ -1,1 +1,1 @@
-export { default } from './Chops'
+export { default } from './Chops';

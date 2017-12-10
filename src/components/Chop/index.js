@@ -1,1 +1,1 @@
-export { default } from './Chop'
+export { default } from './Chop';

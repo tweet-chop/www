@@ -1,21 +1,20 @@
-import React from 'react'
+import React from 'react';
 
-import Chop from '../../components/Chop'
-import Loading from '../../components/Loading'
+import Chop from '../../components/Chop';
+import Loading from '../../components/Loading';
 
-import './Chops.css'
+import './Chops.css';
 
 const Chops = ({ loading, chops }) => (
   <div className="chops">
-    {loading ? <Loading /> 
-    : chops.length ? (
+    {loading ? (
+      <Loading />
+    ) : chops.length ? (
       <ul className="chops-list">
-        {chops.map(chop =>(
-          <Chop key={chop} chop={chop} />
-        ))}
+        {chops.map(chop => <Chop key={chop} chop={chop} />)}
       </ul>
     ) : null}
   </div>
-)
+);
 
-export default Chops
+export default Chops;
