@@ -10,12 +10,10 @@ These instructions will get you a copy of the project up and running on your loc
 
 To run the code on your machine, you will need first to install:
 - Node
-- Yarn (optional)
 
 If you are on macOS X, you can install them using Homebrew
 ```
 brew install node
-brew install yarn
 ```
 
 > The latest the version, the better!
@@ -27,20 +25,13 @@ Now that you have installed the needed software, let's look into getting this in
 Run the following from the root of the project:
 
 ```
-yarn
-```
-or 
-```
 npm install
 ```
 
 This will install all the dependencies for both the client and the server.
 
 Finally, to kick things up, run the following:
-```
-yarn start
-```
-or
+
 ```
 npm start
 ```
@@ -50,10 +41,7 @@ If there are no errors and a webpage appears and it's functional, then you are p
 ## Running the tests
 
 The tests definitely need more attention, but you can run the existing tests with:
-```
-yarn test
-```
-or
+
 ```
 npm run test
 ```
