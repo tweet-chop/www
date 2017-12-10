@@ -12,6 +12,9 @@ const store = {
       case 'chop':
         value = await api.chop(params.text, params.chars)
         break
+      case 'hello':
+        [error, value] = await api.get(key)
+        break
       default:
         value = null
         error = true

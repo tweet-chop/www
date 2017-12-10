@@ -21,6 +21,22 @@ class App extends Component {
     chops: [],
   };
 
+  async componentDidMount() {
+    const { store } = this.props
+
+    this.setState({loading:true})
+    
+    try {
+      let text = await store.get('hello')
+      console.log(text)
+      this.setState({ text: text.hello })
+    } catch (err) {
+      this.setState({error: true})
+    } finally {
+      this.setState({ loading: false })
+    }
+  }
+
   render() {
     const { text, chars, loading, chops, error } = this.state
     const { store } = this.props
