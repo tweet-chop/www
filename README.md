@@ -38,6 +38,8 @@ npm start
 
 If there are no errors and a webpage appears and it's functional, then you are pretty much set!
 
+> Make sure that the `api` is running on `http://localhost:5000`. Please look into the `api` [README.md](https://github.com/tweet-chop/api/blob/master/README.md) to set up a dev server!
+
 ## Running the tests
 
 The tests definitely need more attention, but you can run the existing tests with:
