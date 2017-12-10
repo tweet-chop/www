@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-import Header from './components/Header'
-import Main from './components/Main'
-import Footer from './components/Footer'
+import Header from './layout/Header'
+import Main from './layout/Main'
+import Footer from './layout/Footer'
 
-import Button from './components/Button'
-import Input from './components/Input'
-import Loading from './components/Loading'
 import Text from './components/Text'
 import Whisper from './components/Whisper'
+
+import Chops from './containers/Chops'
+import Form from './containers/Form'
 
 import './App.css';
 
@@ -69,42 +69,20 @@ class App extends Component {
 
           <Text>Automagically chops long paragraphs into tweetable bites, ready for your next tweetstorm!</Text>
           
-          {/* TODO - Wrap into a <form> */}
-          <Input
-            type={"textarea"}
-            label={"Paste the text you want to chop:"}
-            placeholder={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."}
-            value={text}
-            onChange={this.handleTextAreaChange}
+          <Form 
+            textarea={{
+              value: text,
+              onChange: this.handleTextAreaChange
+            }}
+            select={{
+              value: chars,
+              options: [{value: 140, text: '140 characters'}, {value: 280, text: '280 characters'}],
+              onChange: this.handleTextAreaChange
+            }}
+            onSubmit={this.handleSubmit}
           />
 
-          <Input
-            type={"select"}
-            label={"Please select the number of characters you want to chop your text into:"}
-            options={[{value: 140, text: '140 characters'}, {value: 280, text: '280 characters'}]}
-            value={chars}
-            onChange={this.handleSelectChange}
-          />
-
-          <Button className="go-button" onClick={this.handleSubmit}>
-            Go
-          </Button>
-          {/* TODO - Wrap into a <form> */}
-
-          {/* TODO - Move into a component? */}
-          <div className="chops">
-            {loading ? <Loading /> 
-            : chops.length ? (
-              <ul className="chops-list">
-                {chops.map(chop =>(
-                  <li key={chop} className="chop">
-                    <Text className="chop-text">{chop}</Text>
-                  </li>
-                ))}
-              </ul>
-            ) : null}
-          </div>
-          {/* TODO - Move into a component? */}
+          <Chops loading={loading} chops={chops} />
 
         </Main>
         
