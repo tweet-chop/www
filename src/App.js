@@ -21,16 +21,30 @@ class App extends Component {
     chops: [],
   };
 
-  async componentDidMount() {
+  handleTextAreaChange = (e) => {
+    this.setState({ error:false, text: e.target.value })
+  }
+
+  handleSelectChange = (e) => {
+    this.setState({ error:false, chars: e.target.value })
+  }
+
+  handleSubmit = async () => {
+    const { text, chars } = this.state
     const { store } = this.props
 
-    this.setState({loading:true})
-    
+    this.setState({ error:false, loading: true })
+
+    if (!text) {
+      /* TODO: Focus TextArea */
+      return;
+    }
+
     try {
-      let text = await store.get('hello')
-      this.setState({ text: text.hello })
-    } catch (err) {
-      this.setState({error: true})
+      const chops = await store.post('chop', { text, chars })
+      this.setState({ chops: chops.chops })
+    } catch(err) {
+      this.setState({ error: true })
     } finally {
       this.setState({ loading: false })
     }
@@ -59,9 +73,9 @@ class App extends Component {
           <Input
             type={"textarea"}
             label={"Paste the text you want to chop:"}
-            placeholder={"Lorem ipsum ... whatever"}
+            placeholder={"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."}
             value={text}
-            onChange={(e) => { this.setState({ text: e.target.value })}}
+            onChange={this.handleTextAreaChange}
           />
 
           <Input
@@ -69,42 +83,27 @@ class App extends Component {
             label={"Please select the number of characters you want to chop your text into:"}
             options={[{value: 140, text: '140 characters'}, {value: 280, text: '280 characters'}]}
             value={chars}
-            onChange={(e) => { this.setState({ chars: e.target.value })}}
+            onChange={this.handleSelectChange}
           />
 
-          <Button className="go-button" onClick={async () => {
-            const { text, chars } = this.state
-
-            if (!text) {
-              /* TODO: Focus TextArea */
-              return;
-            }
-
-            this.setState({ loading: true })
-            try {
-              const chops = await store.post('chop', { text, chars })
-              this.setState({ chops: chops.chops })
-            } catch(err) {
-              this.setState({ error: true })
-            } finally {
-              this.setState({ loading: false })
-            }
-          }}>
+          <Button className="go-button" onClick={this.handleSubmit}>
             Go
           </Button>
           {/* TODO - Wrap into a <form> */}
 
           {/* TODO - Move into a component? */}
-          {loading ? <Loading /> 
-          : chops.length ? (
-            <ul className="chops">
-              {chops.map(chop =>(
-                <li key={chop} className="chop">
-                  <Text className="chop-text">{chop}</Text>
-                </li>
-              ))}
-            </ul>
-          ) : null}
+          <div className="chops">
+            {loading ? <Loading /> 
+            : chops.length ? (
+              <ul className="chops-list">
+                {chops.map(chop =>(
+                  <li key={chop} className="chop">
+                    <Text className="chop-text">{chop}</Text>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
           {/* TODO - Move into a component? */}
 
         </Main>
