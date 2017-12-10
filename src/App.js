@@ -28,7 +28,6 @@ class App extends Component {
     
     try {
       let text = await store.get('hello')
-      console.log(text)
       this.setState({ text: text.hello })
     } catch (err) {
       this.setState({error: true})
@@ -83,8 +82,8 @@ class App extends Component {
 
             this.setState({ loading: true })
             try {
-              const chops = await store.get('chop', { text, chars })
-              this.setState({ chops })
+              const chops = await store.post('chop', { text, chars })
+              this.setState({ chops: chops.chops })
             } catch(err) {
               this.setState({ error: true })
             } finally {

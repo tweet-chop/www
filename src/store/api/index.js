@@ -3,6 +3,7 @@ import checkStatus from '../../utils/check-http-status'
 
 const api = {
   init: () => {},
+
   get: async (key, params) => {
     let value, error;
 
@@ -25,10 +26,26 @@ const api = {
 
     return [error, value];
   },
-  chop: async (text, chars) => {
-    /* Ahem ... definitely -- TODO -- ! 😅 */
-    return text.split(" ")
-  },
+
+  post: async (key, data) => {
+    let value, error;
+  
+    try {
+      value = await fetch(`${config.url}/api/${key}`, {
+        method: 'POST',
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        }),
+        body: data
+      })
+        .then(checkStatus)
+        .then(res => res.json());
+    } catch (err) {
+      error = err;
+    }
+  
+    return [value, error];
+  }
 }
 
 export default api

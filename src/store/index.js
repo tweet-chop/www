@@ -9,9 +9,6 @@ const store = {
     let value, error;
     
     switch(key) {
-      case 'chop':
-        value = await api.chop(params.text, params.chars)
-        break
       case 'hello':
         [error, value] = await api.get(key)
         break
@@ -29,7 +26,14 @@ const store = {
   post: async (key, data) => {
     let value, error;
 
-    /* -- DO SOME MAGIC -- */
+    switch (key) {
+      case 'chop':
+        [value, error] = await api.post(key, JSON.stringify(data));
+        break;
+
+      default:
+        error = new Error(`Error: Key '${key}' not recognized.`);
+    }
 
     return new Promise((resolve, reject) => {
       value != null ? resolve(value) : reject(error);
