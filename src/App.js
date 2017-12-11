@@ -80,7 +80,7 @@ class App extends Component {
                 { value: 140, text: '140 characters' },
                 { value: 280, text: '280 characters' }
               ],
-              onChange: this.handleTextAreaChange
+              onChange: this.handleSelectChange
             }}
             onSubmit={this.handleSubmit}
           />
