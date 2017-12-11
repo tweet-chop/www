@@ -1,1 +1,12 @@
+.chops-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
+.chop-text {
+  padding: 12px;
+  border: 1px solid grey;
+  border-radius: 6px;
+  background-color: lightgrey;
+}
