@@ -5,4 +5,11 @@
   border: 1px solid lightgrey;
   border-radius: 6px;
   padding: 6px;
+
+  /* 
+   * Because of a bug on Chrome (OSX only) on textareas being grid items
+   * (https://github.com/rachelandrew/gridbugs#11-a-textarea-that-is-a-grid-item-collapses-to-zero-width) 
+   * we need to wrap it inside a div and thus manually set its width ... 
+   */
+  width: calc(100% - 14px);
 }
