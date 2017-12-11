@@ -88,7 +88,7 @@ class App extends Component {
           <Chops loading={loading} chops={chops} />
         </Main>
 
-        <Footer>Made with ∫ by Tihpahine and Antonio.</Footer>
+        <Footer>Made with ∫ by Tiphaine and Antonio.</Footer>
       </div>
     );
   }
