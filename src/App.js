@@ -33,12 +33,12 @@ class App extends Component {
     const { text, chars } = this.state;
     const { store } = this.props;
 
-    this.setState({ error: false, loading: true });
-
     if (!text) {
       /* TODO: Focus TextArea */
       return;
     }
+
+    this.setState({ error: false, loading: true, chops: [] });
 
     try {
       const chops = await store.post('chop', { text, chars });
@@ -49,6 +49,17 @@ class App extends Component {
       this.setState({ loading: false });
     }
   };
+
+  componentDidUpdate(_, prevState) {
+    // Scroll to the Chops if we are loading them and no error occured!
+    if (
+      prevState.loading === false &&
+      this.state.loading === true &&
+      this.state.error === false
+    ) {
+      document.querySelector('.chops').scrollIntoView(true);
+    }
+  }
 
   render() {
     const { text, chars, loading, chops, error } = this.state;
