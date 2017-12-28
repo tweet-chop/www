@@ -1,8 +1,8 @@
 .input-select {
-  height: 6vh;
+  min-height: 6vh;
   font-size: 1.17em;
   text-align: center;
-  border: 1px solid lightgrey;
+  border: 1px solid #d4d8d4;
   border-radius: 6px;
   padding: 6px;
   -moz-appearance: initial;
